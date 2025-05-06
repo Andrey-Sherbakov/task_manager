@@ -45,11 +45,16 @@ class SQLAlchemyORMRepository(IRepository):
         return new_item.scalar()
 
     async def update_by_id(self, item_id: int, item: BaseModel) -> model:
-        stmt = update(self.model).where(self.model.id == item_id).values(**item.model_dump())
+        stmt = (
+            update(self.model)
+            .where(self.model.id == item_id)
+            .values(**item.model_dump())
+            .returning(self.model)
+        )
         new_item = await self.session.execute(stmt)
         return new_item.scalar()
 
     async def delete_by_id(self, item_id: int) -> model:
-        stmt = delete(self.model).where(self.model.id == item_id)
+        stmt = delete(self.model).where(self.model.id == item_id).returning(self.model)
         item = await self.session.execute(stmt)
         return item.scalar()

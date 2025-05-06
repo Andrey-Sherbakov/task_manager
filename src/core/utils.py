@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.core.db import async_session_maker
 from src.tasks.repository import ITaskRepository, TaskRepository
 
 
@@ -25,11 +26,12 @@ class IUnitOfWork(ABC):
 
 
 class AsyncUnitOfWork(IUnitOfWork):
-    def __init__(self, session_factory: AsyncSession) -> None:
-        self._session_factory = session_factory
+    def __init__(self) -> None:
+        self._session_factory = async_session_maker
+        self.session = None
 
     async def __aenter__(self) -> "AsyncUnitOfWork":
-        self.session = self._session_factory
+        self.session: AsyncSession = self._session_factory()
         self.tasks = TaskRepository(self.session)
         return self
 
