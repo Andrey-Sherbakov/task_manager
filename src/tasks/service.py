@@ -1,6 +1,7 @@
+from src.auth.schemas import Payload
 from src.core.utils import IUnitOfWork
 from src.tasks.exceptions import TasksNotFound, TaskNotFound
-from src.tasks.schemas import TaskFromDb, CreateTask
+from src.tasks.schemas import TaskFromDb, CreateTask, CreateTaskToDb
 
 
 class TaskService:
@@ -12,15 +13,15 @@ class TaskService:
             tasks = await uow.tasks.get_all()
             if not tasks:
                 raise TasksNotFound
-
             result = []
             for task in tasks:
                 result.append(TaskFromDb.model_validate(task))
             return result
 
-    async def create(self, new_task: CreateTask):
+    async def create(self, new_task: CreateTask, user: Payload):
         async with self.uow as uow:
-            task = await uow.tasks.create(new_task)
+            task_to_db = CreateTaskToDb(**new_task.model_dump(), creator_id=user.id)
+            task = await uow.tasks.create(task_to_db)
             await uow.commit()
             return TaskFromDb.model_validate(task)
 

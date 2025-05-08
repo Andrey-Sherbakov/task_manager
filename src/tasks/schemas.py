@@ -8,8 +8,16 @@ class CreateTask(BaseModel):
     description: str | None = None
 
 
-class TaskFromDb(CreateTask):
-    model_config = ConfigDict(from_attributes=True)
+class CreateTaskToDb(CreateTask):
+    creator_id: int
 
+
+class TaskToUser(CreateTask):
     id: int
     updated_at: datetime.datetime
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class TaskFromDb(TaskToUser):
+    creator_id: int

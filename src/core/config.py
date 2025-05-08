@@ -1,7 +1,14 @@
+from enum import Enum
+
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
 load_dotenv()
+
+
+class TokenType(Enum):
+    access = "access"
+    refresh = "refresh"
 
 
 class Settings(BaseSettings):
@@ -17,11 +24,17 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRATION: int
 
     @property
-    def ASYNC_DATABASE_URL(self):
+    def ASYNC_DATABASE_URL(self) -> str:
         return (
             f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:"
             f"{self.DB_PORT}/{self.DB_NAME}"
         )
+
+    def get_token_expiration(self, token_type: TokenType) -> int:
+        if token_type == TokenType.refresh:
+            return self.REFRESH_TOKEN_EXPIRATION
+        else:
+            return self.ACCESS_TOKEN_EXPIRATION
 
 
 settings = Settings()

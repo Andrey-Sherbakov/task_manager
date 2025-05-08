@@ -26,6 +26,7 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 from src.core import db
 from src.tasks import models
+from src.auth import models
 
 target_metadata = db.Base.metadata
 

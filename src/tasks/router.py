@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from starlette import status
 
+from src.auth.dependencies import AuthorizeDep
 from src.tasks.dependencies import TaskServiceDep
 from src.tasks.schemas import CreateTask, TaskFromDb
 
@@ -18,8 +19,8 @@ async def get_task(task_id: int, service: TaskServiceDep) -> TaskFromDb:
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=TaskFromDb)
-async def create_task(task: CreateTask, service: TaskServiceDep) -> TaskFromDb:
-    return await service.create(task)
+async def create_task(task: CreateTask, service: TaskServiceDep, user: AuthorizeDep) -> TaskFromDb:
+    return await service.create(task, user)
 
 
 @router.put("/{task_id}", response_model=TaskFromDb)
