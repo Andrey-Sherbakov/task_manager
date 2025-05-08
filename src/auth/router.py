@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, Request, Response
 
 from src.auth.dependencies import UserServiceDep, AuthorizeDep
-from src.auth.schemas import CreateUser, UserFromDb, UserFromDbWithTasks, UserLogin, Tokens, Payload
+from src.auth.schemas import CreateUser, UserFromDb, UserWithTasks, UserLogin, Tokens, Payload
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -16,8 +16,8 @@ async def create_user(new_user: CreateUser, service: UserServiceDep) -> UserFrom
     return user
 
 
-@router.get("/profile", response_model=UserFromDbWithTasks)
-async def get_user(service: UserServiceDep, user: AuthorizeDep) -> UserFromDbWithTasks:
+@router.get("/profile", response_model=UserWithTasks)
+async def get_user(service: UserServiceDep, user: AuthorizeDep) -> UserWithTasks:
     user = await service.get_with_tasks(user)
     return user
 

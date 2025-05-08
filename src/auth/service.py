@@ -9,7 +9,7 @@ from src.auth.exceptions import (
     TokenExpired,
     AuthorizationError,
 )
-from src.auth.schemas import CreateUser, UserFromDb, UserFromDbWithTasks, UserLogin, Payload, Tokens
+from src.auth.schemas import CreateUser, UserFromDb, UserWithTasks, UserLogin, Payload, Tokens
 from src.core.config import TokenType
 from src.core.utils import IUnitOfWork
 
@@ -28,12 +28,12 @@ class UserService:
             except IntegrityError:
                 raise UserAlreadyExists
 
-    async def get_with_tasks(self, user: Payload) -> UserFromDbWithTasks:
+    async def get_with_tasks(self, user: Payload) -> UserWithTasks:
         async with self.uow as uow:
             user = await uow.users.get_by_username_with_tasks(user.username)
             if not user:
                 raise UserNotFound
-            return UserFromDbWithTasks.model_validate(user)
+            return UserWithTasks.model_validate(user)
 
     async def authenticate(self, response: Response, user_login: UserLogin) -> Tokens:
         async with self.uow as uow:

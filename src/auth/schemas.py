@@ -20,7 +20,7 @@ class UserFromDb(BaseUser):
     model_config = ConfigDict(from_attributes=True)
 
 
-class UserFromDbWithTasks(UserFromDb):
+class UserWithTasks(UserFromDb):
     tasks: list[TaskToUser] = []
 
 
