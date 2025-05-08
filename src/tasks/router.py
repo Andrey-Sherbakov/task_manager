@@ -25,11 +25,11 @@ async def create_task(task: CreateTask, service: TaskServiceDep, user: Authorize
 
 @router.put("/{task_id}", response_model=TaskFromDb)
 async def update_task(
-    task_id: int, updated_task: CreateTask, service: TaskServiceDep
+    task_id: int, updated_task: CreateTask, service: TaskServiceDep, user: AuthorizeDep
 ) -> TaskFromDb:
-    return await service.update(task_id, updated_task)
+    return await service.update(task_id, updated_task, user)
 
 
 @router.delete("/{task_id}", response_model=TaskFromDb)
-async def delete_task(task_id: int, service: TaskServiceDep) -> TaskFromDb:
-    return await service.delete(task_id)
+async def delete_task(task_id: int, service: TaskServiceDep, user: AuthorizeDep) -> TaskFromDb:
+    return await service.delete(task_id, user)

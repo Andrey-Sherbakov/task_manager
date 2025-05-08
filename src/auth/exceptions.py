@@ -38,6 +38,15 @@ class AuthorizationError(HTTPException):
         super().__init__(detail=detail, status_code=status_code)
 
 
+class AccessDenied(HTTPException):
+    def __init__(
+        self,
+        detail: str = "You dont have permission for this action",
+        status_code: status = status.HTTP_403_FORBIDDEN,
+    ):
+        super().__init__(detail=detail, status_code=status_code)
+
+
 class TokenExpired(HTTPException):
     def __init__(
         self,

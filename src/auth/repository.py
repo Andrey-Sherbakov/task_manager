@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload
@@ -7,7 +7,7 @@ from src.auth.models import User
 from src.core.repository import SQLAlchemyORMRepository, IRepository
 
 
-class IUserRepository(IRepository, ABC):
+class IUserRepository(IRepository[User]):
     @abstractmethod
     async def get_by_username(self, username: str) -> User | None: ...
 
@@ -15,7 +15,7 @@ class IUserRepository(IRepository, ABC):
     async def get_by_username_with_tasks(self, username: str) -> User | None: ...
 
 
-class UserRepository(SQLAlchemyORMRepository, IUserRepository):
+class UserRepository(SQLAlchemyORMRepository[User], IUserRepository):
     model = User
 
     async def get_by_username(self, username: str) -> User | None:

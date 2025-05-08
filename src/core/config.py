@@ -12,12 +12,14 @@ class TokenType(Enum):
 
 
 class Settings(BaseSettings):
+    # postgres params
     DB_USER: str
     DB_PASS: str
     DB_HOST: str
     DB_PORT: str
     DB_NAME: str
 
+    # JWT params
     SECRET_KEY: str
     JWT_ALGORITHM: str
     ACCESS_TOKEN_EXPIRATION: int

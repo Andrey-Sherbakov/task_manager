@@ -5,11 +5,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.auth.repository import IUserRepository, UserRepository
 from src.core.db import async_session_maker
 from src.tasks.repository import ITaskRepository, TaskRepository
+from src.websocket.utils import ConnectionManager, websocket_manager
 
 
 class IUnitOfWork(ABC):
     tasks: ITaskRepository
     users: IUserRepository
+    websocket: ConnectionManager
 
     @abstractmethod
     def __init__(self) -> None: ...
@@ -37,6 +39,7 @@ class AsyncUnitOfWork(IUnitOfWork):
 
         self.tasks = TaskRepository(self.session)
         self.users = UserRepository(self.session)
+        self.websocket = websocket_manager
 
         return self
 
