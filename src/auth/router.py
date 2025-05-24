@@ -26,13 +26,3 @@ async def get_user(service: UserServiceDep, user: AuthorizeDep) -> UserWithTasks
 async def login(response: Response, user_login: UserLogin, service: UserServiceDep) -> Tokens:
     tokens = await service.authenticate(response, user_login)
     return tokens
-
-
-@router.get("/authorize", response_model=Payload)
-async def authorize(request: Request, response: Response, service: UserServiceDep) -> Payload:
-    """
-    test endpoint
-    todo: delete later
-    """
-    payload = await service.authorize(request, response)
-    return payload

@@ -28,7 +28,7 @@ class IRepository(Generic[T], ABC):
 
 
 class SQLAlchemyORMRepository(IRepository[T]):
-    model: T = None
+    model: T
 
     def __init__(self, session: AsyncSession):
         self.session = session

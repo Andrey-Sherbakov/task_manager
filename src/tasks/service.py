@@ -14,12 +14,11 @@ class TaskService:
             tasks = await uow.tasks.get_all()
             if not tasks:
                 raise TasksNotFound
-            result = []
-            for task in tasks:
-                result.append(TaskFromDb.model_validate(task))
+
+            result = [TaskFromDb.model_validate(task) for task in tasks]
             return result
 
-    async def create(self, new_task: CreateTask, user: Payload):
+    async def create(self, new_task: CreateTask, user: Payload) -> TaskFromDb:
         async with self.uow as uow:
             task_to_db = CreateTaskToDb(**new_task.model_dump(), creator_id=user.id)
             task = await uow.tasks.create(task_to_db)

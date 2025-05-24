@@ -14,7 +14,9 @@ async def get_user_service(uow: UOWDep) -> UserService:
 UserServiceDep = Annotated[UserService, Depends(get_user_service)]
 
 
-async def get_authorize(user_service: UserServiceDep, request: Request, response: Response):
+async def get_authorize(
+    user_service: UserServiceDep, request: Request, response: Response
+) -> Payload:
     return await user_service.authorize(request, response)
 
 

@@ -19,6 +19,13 @@ class Settings(BaseSettings):
     DB_PORT: str
     DB_NAME: str
 
+    # test postgres params
+    TEST_USER: str
+    TEST_PASS: str
+    TEST_HOST: str
+    TEST_PORT: str
+    TEST_NAME: str
+
     # JWT params
     SECRET_KEY: str
     JWT_ALGORITHM: str
@@ -30,6 +37,13 @@ class Settings(BaseSettings):
         return (
             f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:"
             f"{self.DB_PORT}/{self.DB_NAME}"
+        )
+
+    @property
+    def TEST_DATABASE_URL(self) -> str:
+        return (
+            f"postgresql+asyncpg://{self.TEST_USER}:{self.TEST_PASS}@{self.TEST_HOST}:"
+            f"{self.TEST_PORT}/{self.TEST_NAME}"
         )
 
     def get_token_expiration(self, token_type: TokenType) -> int:
