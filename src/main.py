@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from auth.router import router as auth_router
-from tasks.router import router as tasks_router
-from websocket.router import router as ws_router
+from src.auth.router import router as auth_router
+from src.tasks.router import router as tasks_router
+from src.websocket.router import router as ws_router
 
 app = FastAPI()
 
