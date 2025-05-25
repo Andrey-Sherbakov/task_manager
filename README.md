@@ -22,39 +22,39 @@ Task manager - FastAPI приложение для управления зада
 
 ### Docker
 1. Клонировать репозиторий:
-  ```shell
-  git clone https://github.com/Andrey-Sherbakov/task_manager.git
-  cd task_manager
-  ```
+    ```shell
+    git clone https://github.com/Andrey-Sherbakov/task_manager.git
+    cd task_manager
+    ```
 2. Изменить данные в файле .sample.env на свои и переименовать его в .env
 3. Запустить docker compose:
-  ```shell
-  docker compose up --build
-  ```
+    ```shell
+    docker compose up --build
+    ```
 4. Применить миграции:
-  ```shell
-  docker compose exec app alembic upgrade head
-  ```
+    ```shell
+    docker compose exec app alembic upgrade head
+    ```
 5. Перейти на http://127.0.0.1:8000/docs#/
   
 ### Poetry
 1. Клонировать репозиторий:
-  ```shell
-  git clone https://github.com/Andrey-Sherbakov/task_manager.git
-  cd task_manager
-  ```
+    ```shell
+    git clone https://github.com/Andrey-Sherbakov/task_manager.git
+    cd task_manager
+    ```
 2. Изменить данные в файле .sample.env на свои и переименовать его в .env
 3. Установить [Poetry](https://python-poetry.org/docs/#installation)
 4. Установить зависимости:
-  ```shell
-  poetry install
-  ```
+    ```shell
+    poetry install
+    ```
 5. Применить миграции:
-  ```shell
-  alembic upgrade head
-  ```
+    ```shell
+    alembic upgrade head
+    ```
 6. Запустить приложение:
-  ```shell
-  uvicorn src.main:app --reload
-  ```
+    ```shell
+    uvicorn src.main:app --reload
+    ```
 7. Перейти на http://127.0.0.1:8000/docs#/
