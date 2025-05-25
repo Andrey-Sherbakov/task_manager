@@ -1,2 +1,2 @@
 # TASK MANAGER
-Simple task manager 
+Simple task manager written on FastAPI
