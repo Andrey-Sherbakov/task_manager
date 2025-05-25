@@ -1,11 +1,6 @@
 from httpx import AsyncClient
 
-from src.auth.dependencies import get_authorize
-from src.main import app
 from src.tasks.schemas import TaskFromDb
-from tests.conftest import fake_get_authorize
-
-app.dependency_overrides[get_authorize] = fake_get_authorize
 
 TEST_TASK: TaskFromDb
 

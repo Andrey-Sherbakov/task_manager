@@ -19,6 +19,13 @@ test_async_session_maker = async_sessionmaker(
 )
 Base.metadata.bind = engine_test
 
+FAKE_USER = {
+    "username": "user_test",
+    "password": "password_test",
+    "hashed_password": "$2b$12$nsigdvEFxBJ6oSmBWDSvAePyQS1y0evPr6BIop.d4Ovp9uEr//S8C",
+    "email": "test@user.com",
+}
+
 
 @pytest.fixture(autouse=True, scope="module")
 async def prepare_database():
@@ -27,9 +34,9 @@ async def prepare_database():
 
     async with test_async_session_maker() as session:
         test_user = User(
-            username="user_test",
-            password="$2b$12$nsigdvEFxBJ6oSmBWDSvAePyQS1y0evPr6BIop.d4Ovp9uEr//S8C",
-            email="test@user.com",
+            username=FAKE_USER["username"],
+            password=FAKE_USER["hashed_password"],
+            email=FAKE_USER["email"],
         )
         session.add(test_user)
         await session.commit()
@@ -51,6 +58,9 @@ app.dependency_overrides[AsyncUnitOfWork] = TestAsyncUnitOfWork
 
 async def fake_get_authorize():
     return Payload(id=1, username="user_test", email="test@user.com")
+
+
+app.dependency_overrides[get_authorize] = fake_get_authorize
 
 
 @pytest.fixture(scope="session")

@@ -1,8 +1,9 @@
 from httpx import AsyncClient
 
 from src.auth.schemas import UserFromDb, Tokens, UserWithTasks
+from tests.conftest import FAKE_USER
 
-TEST_USER = UserFromDb
+TEST_USER: UserFromDb
 
 
 async def test_create_user(ac: AsyncClient):
@@ -42,4 +43,5 @@ async def test_get_user(ac: AsyncClient):
     assert user_with_tasks.tasks == []
 
     user = UserFromDb.model_validate(response.json())
-    assert user == TEST_USER
+    assert user.username == FAKE_USER["username"]
+    assert user.email == FAKE_USER["email"]
