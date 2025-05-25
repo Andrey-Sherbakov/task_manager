@@ -1,10 +1,10 @@
-# Task Manager
+# 📝 Task Manager
 
 Task manager - FastAPI приложение для управления задачами с поддержкой отслеживания 
 изменений в режиме реального времени при помощи WebSocket.
 
 
-## Особенности
+## 🛠 Особенности
 
 - Регистрация и аутентификация пользователей при помощи **JWT** токенов (refresh и access)
 - Функционал создания, изменения, удаления и чтения для задач и пользователей
@@ -20,9 +20,9 @@ Task manager - FastAPI приложение для управления зада
 - Контейнеризация с помощью Docker для быстрого и удобного развертывания
 
 
-## Установка и запуск
+## 🚀 Установка и запуск
 
-### Docker
+### :whale: Docker
 1. Клонировать репозиторий:
     ```shell
     git clone https://github.com/Andrey-Sherbakov/task_manager.git
@@ -38,7 +38,7 @@ Task manager - FastAPI приложение для управления зада
     docker compose exec app alembic upgrade head
     ```
   
-### Poetry
+### ⚙️ Poetry
 1. Клонировать репозиторий:
     ```shell
     git clone https://github.com/Andrey-Sherbakov/task_manager.git
@@ -59,17 +59,39 @@ Task manager - FastAPI приложение для управления зада
     poetry run uvicorn src.main:app --reload
     ```
 
-## API
+## 🌐 API
 После запуска документация доступна по адресу http://127.0.0.1:8000/docs/
 ![image](https://drive.google.com/uc?id=1LLZqQkXmznoMut_GB49JIrFXSNIjgD64)
 
-## Тестирование с помощью Pytest
+## 🔌 WebSocket
+#### Адрес WebSocket подключения для отслеживания изменений задач:
+* `ws://127.0.0.1:8000/websocket/connect?username=YOUR_USERNAME`
+
+#### Подключение к WebSocket:
+* [Postman](https://learning.postman.com/docs/sending-requests/websocket/create-a-websocket-request/)
+* Клиент на Python:
+    ```python
+    import asyncio
+    import websockets
+    
+    async def main():
+        uri = "ws://127.0.0.1:8000/websocket/connect?username=YOUR_USERNAME"
+        async with websockets.connect(uri) as websocket:
+            while True:
+                message = await websocket.recv()
+                print("Received:", message)
+    
+    asyncio.run(main())
+    ```
+
+
+## 🧪 Тестирование с помощью Pytest
 1. Перейти в главную директорию приложения
 2. Запустить тесты:
     ```shell
     poetry run pytest
 
-## Структура проекта
+## 🧱 Структура проекта
 ```
 .
 ├── alembic
@@ -122,3 +144,6 @@ Task manager - FastAPI приложение для управления зада
 └── requirements.txt
 
 ```
+
+## 🧾 Лицензия
+Проект доступен под лицензией MIT.
