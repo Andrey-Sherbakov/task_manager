@@ -10,9 +10,9 @@ Task manager - FastAPI приложение для управления зада
 - Функционал создания, изменения, удаления и чтения для задач и пользователей
 - Отслеживание изменений задач в режиме реального времени при помощи **WebSocket**
 - Для работы с данными используется:
-  * База — **PostgreSQL**
+  * База данных — **PostgreSQL**
   * ORM — **SQLAlchemy**
-  * Валидация — **Pydantic**
+  * Валидация данных — **Pydantic**
 - Приложение полностью асинхронное:
   * бэкенд фреймворк — **FastAPI**
   * драйвер для базы данных — **asyncpg**
@@ -37,7 +37,6 @@ Task manager - FastAPI приложение для управления зада
     ```shell
     docker compose exec app alembic upgrade head
     ```
-5. Перейти на http://127.0.0.1:8000/docs#/
   
 ### Poetry
 1. Клонировать репозиторий:
@@ -59,8 +58,10 @@ Task manager - FastAPI приложение для управления зада
     ```shell
     poetry run uvicorn src.main:app --reload
     ```
-7. Перейти на http://127.0.0.1:8000/docs#/
 
+## API
+После запуска документация доступна по адресу http://127.0.0.1:8000/docs/
+![image](https://drive.google.com/uc?id=1LLZqQkXmznoMut_GB49JIrFXSNIjgD64)
 
 ## Тестирование с помощью Pytest
 1. Перейти в главную директорию приложения
@@ -69,3 +70,55 @@ Task manager - FastAPI приложение для управления зада
     poetry run pytest
 
 ## Структура проекта
+```
+.
+├── alembic
+│     ├── versions
+│     │     └── ...
+│     ├── README
+│     ├── env.py
+│     └── script.py.mako
+├── src
+│     ├── auth
+│     │     ├── dependencies.py
+│     │     ├── exceptions.py
+│     │     ├── models.py
+│     │     ├── repository.py
+│     │     ├── router.py
+│     │     ├── schemas.py
+│     │     ├── security.py
+│     │     └── service.py
+│     ├── core
+│     │     ├── config.py
+│     │     ├── db.py
+│     │     ├── dependencies.py
+│     │     ├── repository.py
+│     │     └── utils.py
+│     ├── tasks
+│     │     ├── dependencies.py
+│     │     ├── exceptions.py
+│     │     ├── models.py
+│     │     ├── repository.py
+│     │     ├── router.py
+│     │     ├── schemas.py
+│     │     └── service.py
+│     ├── websocket
+│     │     ├── router.py
+│     │     └── utils.py
+│     ├── Dockerfile
+│     └── main.py
+├── tests
+│     ├── conftest.py
+│     ├── test_auth.py
+│     └── test_tasks.py
+├── .env
+├── .gitignore
+├── LICENSE
+├── README.md
+├── alembic.ini
+├── docker-compose.yml
+├── poetry.lock
+├── pyproject.toml
+└── requirements.txt
+
+```
