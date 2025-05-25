@@ -1,4 +1,14 @@
-![title](https://drive.google.com/uc?id=1GSnSNP8X-17BzBLwWHGyUdRqYK3LJy4U)
+<p align="center">
+  <img src="https://drive.google.com/uc?id=1GSnSNP8X-17BzBLwWHGyUdRqYK3LJy4U" alt="title">
+</p>
+
+![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=yellow)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115.12-blue?logo=fastapi)
+![License](https://img.shields.io/github/license/Andrey-Sherbakov/task_manager)
+
+
+
+
 
 Task manager - FastAPI приложение для управления задачами с поддержкой отслеживания 
 изменений в режиме реального времени при помощи WebSocket.
