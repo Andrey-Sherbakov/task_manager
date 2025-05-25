@@ -8,9 +8,9 @@ Task manager - FastAPI приложение для управления зада
 - Функционал создания, изменения, удаления и чтения для задач и пользователей
 - Отслеживание изменений задач в режиме реального времени при помощи **WebSocket**
 - Для работы с данными используется:
-  * База данных — **PostgreSQL**
+  * База — **PostgreSQL**
   * ORM — **SQLAlchemy**
-  * Валидация данных — **Pydantic**
+  * Валидация — **Pydantic**
 - Приложение полностью асинхронное:
   * бэкенд фреймворк — **FastAPI**
   * драйвер для базы данных — **asyncpg**
@@ -20,35 +20,41 @@ Task manager - FastAPI приложение для управления зада
 
 ## Установка и запуск
 
-- Клонировать репозиторий:
+### Docker
+1. Клонировать репозиторий:
   ```shell
   git clone https://github.com/Andrey-Sherbakov/task_manager.git
   cd task_manager
   ```
-- Изменить данные в файле .sample.env на свои и переименовать его в .env
-
-### 1. При помощи Docker
-- Запустить docker compose:
+2. Изменить данные в файле .sample.env на свои и переименовать его в .env
+3. Запустить docker compose:
   ```shell
   docker compose up --build
   ```
-- Применить миграции:
+4. Применить миграции:
   ```shell
   docker compose exec app alembic upgrade head
   ```
-- Перейти на http://127.0.0.1:8000/docs#/
+5. Перейти на http://127.0.0.1:8000/docs#/
   
-### 2. При помощи Poetry
-- Установить зависимости:
+### Poetry
+1. Клонировать репозиторий:
+  ```shell
+  git clone https://github.com/Andrey-Sherbakov/task_manager.git
+  cd task_manager
+  ```
+2. Изменить данные в файле .sample.env на свои и переименовать его в .env
+3. Установить [Poetry](https://python-poetry.org/docs/#installation)
+4. Установить зависимости:
   ```shell
   poetry install
   ```
-- Применить миграции:
+5. Применить миграции:
   ```shell
   alembic upgrade head
   ```
-- Запустить приложение:
+6. Запустить приложение:
   ```shell
   uvicorn src.main:app --reload
   ```
-- Перейти на http://127.0.0.1:8000/docs#/
+7. Перейти на http://127.0.0.1:8000/docs#/
