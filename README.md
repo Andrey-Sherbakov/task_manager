@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://2.downloader.disk.yandex.ru/preview/689fd13fedf8f2603e7e1960c41aab5bc80a5bcda9444f7db8313a1a2ea00570/inf/g5Ogjyl01Qdx85H-KDwhRoxVxzqgcfOKwOwtdlv32KyVwPsFTxQl2yGGFcMfOsoUce2pCzE8aMaR6RPm9oxviA%3D%3D?uid=82713337&filename=%F0%9F%93%8BTask_Manager.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=82713337&tknv=v3&size=1920x932" alt="title">
+  <img src="https://disk.yandex.ru/i/9_IpP2aqsW-nwA" alt="title">
 </p>
 
 <p align="center">
