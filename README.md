@@ -1,2 +1,2 @@
 # TASK MANAGER
-Simple task manager written on FastAPI
+Simple task manager created with FastAPI and Postgresql
