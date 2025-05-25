@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://disk.yandex.ru/i/9_IpP2aqsW-nwA" alt="title">
+  <img src="https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/9_IpP2aqsW-nwA" alt="title">
 </p>
 
 <p align="center">
