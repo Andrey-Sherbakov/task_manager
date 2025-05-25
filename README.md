@@ -2,13 +2,16 @@
   <img src="https://drive.google.com/uc?id=1GSnSNP8X-17BzBLwWHGyUdRqYK3LJy4U" alt="title">
 </p>
 
-![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=yellow)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115.12-blue?logo=fastapi)
-![License](https://img.shields.io/github/license/Andrey-Sherbakov/task_manager)
-
-
-
-
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=yellow" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-0.115.12-blue?logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/SQLAlchemy-2.0.40-blue?logo=sqlalchemy" alt="SQLAlchemy">
+  <img src="https://img.shields.io/badge/PostgreSQL-17.4-blue?logo=postgresql" alt="SQLAlchemy">
+  <img src="https://img.shields.io/badge/Pytest-8.3.5-blue?logo=pytest&logoColor=white" alt="Pytest">
+  <img src="https://img.shields.io/badge/Docker-28.0.4-2496ED?logo=docker" alt="Docker">
+  
+  <img src="https://img.shields.io/github/license/Andrey-Sherbakov/task_manager" alt="License">
+</p>
 
 Task manager - FastAPI приложение для управления задачами с поддержкой отслеживания 
 изменений в режиме реального времени при помощи WebSocket.
