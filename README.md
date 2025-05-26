@@ -104,48 +104,48 @@ Task manager - FastAPI приложение для управления зада
     ```shell
     poetry run pytest
 
-## 🧱 Структура проекта
+## 📁 Структура проекта
 ```
 .
 ├── alembic
-│     ├── versions
-│     │     └── ...
-│     ├── README
-│     ├── env.py
-│     └── script.py.mako
+│   ├── versions
+│   │   └── ...
+│   ├── README
+│   ├── env.py
+│   └── script.py.mako
 ├── src
-│     ├── auth
-│     │     ├── dependencies.py
-│     │     ├── exceptions.py
-│     │     ├── models.py
-│     │     ├── repository.py
-│     │     ├── router.py
-│     │     ├── schemas.py
-│     │     ├── security.py
-│     │     └── service.py
-│     ├── core
-│     │     ├── config.py
-│     │     ├── db.py
-│     │     ├── dependencies.py
-│     │     ├── repository.py
-│     │     └── utils.py
-│     ├── tasks
-│     │     ├── dependencies.py
-│     │     ├── exceptions.py
-│     │     ├── models.py
-│     │     ├── repository.py
-│     │     ├── router.py
-│     │     ├── schemas.py
-│     │     └── service.py
-│     ├── websocket
-│     │     ├── router.py
-│     │     └── utils.py
-│     ├── Dockerfile
-│     └── main.py
+│   ├── auth
+│   │   ├── dependencies.py
+│   │   ├── exceptions.py
+│   │   ├── models.py
+│   │   ├── repository.py
+│   │   ├── router.py
+│   │   ├── schemas.py
+│   │   ├── security.py
+│   │   └── service.py
+│   ├── core
+│   │   ├── config.py
+│   │   ├── db.py
+│   │   ├── dependencies.py
+│   │   ├── repository.py
+│   │   └── utils.py
+│   ├── tasks
+│   │   ├── dependencies.py
+│   │   ├── exceptions.py
+│   │   ├── models.py
+│   │   ├── repository.py
+│   │   ├── router.py
+│   │   ├── schemas.py
+│   │   └── service.py
+│   ├── websocket
+│   │   ├── router.py
+│   │   └── utils.py
+│   ├── Dockerfile
+│   └── main.py
 ├── tests
-│     ├── conftest.py
-│     ├── test_auth.py
-│     └── test_tasks.py
+│   ├── conftest.py
+│   ├── test_auth.py
+│   └── test_tasks.py
 ├── .env
 ├── .gitignore
 ├── LICENSE
