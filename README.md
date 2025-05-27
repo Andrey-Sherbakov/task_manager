@@ -13,6 +13,8 @@
   <img src="https://img.shields.io/github/license/Andrey-Sherbakov/task_manager" alt="License">
 </p>
 
+---
+
 Task manager - FastAPI приложение для управления задачами с поддержкой отслеживания 
 изменений в режиме реального времени при помощи WebSocket.
 
